@@ -17,7 +17,7 @@ describe('test/cluster.test.js', () => {
       // app.debug();
 
       // wait for one worker start
-      await sleep(3000);
+      await sleep(4000);
     });
     after(() => async () => {
       await app.ready();
