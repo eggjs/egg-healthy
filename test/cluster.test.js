@@ -3,7 +3,7 @@
 const mock = require('egg-mock');
 const sleep = require('mz-modules/sleep');
 
-describe('test/healthy.test.js', () => {
+describe('test/cluster.test.js', () => {
   let app;
 
   afterEach(mock.restore);
@@ -61,4 +61,31 @@ describe('test/healthy.test.js', () => {
     });
   });
 
+  describe('stop', () => {
+    let p;
+    before(async () => {
+      app = mock.cluster({
+        baseDir: 'apps/healthapp',
+      });
+      app.debug();
+      await app.ready();
+    });
+    after(() => p);
+
+    // worker will disconnect first after kill master, so requesting will be fail
+    it.skip('should response 503 from both readiness and liveness', async () => {
+      p = app.close();
+
+      // wait for triggering close
+      await sleep(1000);
+
+      await app.httpRequest()
+        .get('/healthy/readiness')
+        .expect(503);
+
+      await app.httpRequest()
+        .get('/healthy/liveness')
+        .expect(503);
+    });
+  });
 });

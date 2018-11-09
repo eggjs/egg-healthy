@@ -15,10 +15,12 @@ module.exports = class Lifecycle {
   }
 
   async didReady(err) {
+    // it should be run before all `beforeClose` handler
+    this.app.lifecycle.registerBeforeClose(() => {
+      this.serverHealthStatus.stop();
+    });
+
     if (err) this.serverHealthStatus.down();
   }
 
-  async beforeClose() {
-    this.serverHealthStatus.stop();
-  }
 };
