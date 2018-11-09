@@ -8,7 +8,11 @@
   "keywords": [
     "egg",
     "eggPlugin",
-    "egg-plugin"
+    "egg-plugin",
+    "health check",
+    "cloudnative",
+    "readiness",
+    "liveness"
   ],
   "dependencies": {
     "statuses": "^1.5.0"
