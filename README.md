@@ -20,9 +20,7 @@
 [download-image]: https://img.shields.io/npm/dm/egg-healthy.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-healthy
 
-<!--
-Description here.
--->
+Liveness and Readiness health check for egg application
 
 ## Install
 
@@ -45,6 +43,8 @@ exports.healthy = {
 ```js
 // {app_root}/config/config.default.js
 exports.healthy = {
+  readinessPath: 'custom path for readiness check',
+  livenessPath: 'custom path for liveness check',
 };
 ```
 

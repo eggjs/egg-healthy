@@ -1,7 +1,7 @@
 {
   "name": "egg-healthy",
   "version": "0.0.0",
-  "description": "",
+  "description": "Liveness and Readiness health check for egg application",
   "eggPlugin": {
     "name": "healthy"
   },
@@ -43,7 +43,7 @@
     "app.js"
   ],
   "ci": {
-    "version": "8, 9"
+    "version": "8, 10"
   },
   "repository": {
     "type": "git",
@@ -53,6 +53,6 @@
     "url": "https://github.com/eggjs/egg/issues"
   },
   "homepage": "https://github.com/eggjs/egg-healthy#readme",
-  "author": "",
+  "author": "popomore",
   "license": "MIT"
 }
