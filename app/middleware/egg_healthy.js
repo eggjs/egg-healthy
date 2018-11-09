@@ -3,15 +3,16 @@
 const statuses = require('statuses');
 const HealthStatusCode = require('../../lib/health_status_code');
 
-module.exports = config => {
-  return async (ctx, next) {
+module.exports = (_, app) => {
+  const config = app.config.healthy;
+  return async (ctx, next) => {
     if (ctx.path === config.readinessPath) {
       ctx.status = getReadinessStatus(ctx);
       ctx.body = statuses[ctx.status];
       return;
     }
 
-    if (ctx.path === config.readinessPath) {
+    if (ctx.path === config.livenessPath) {
       ctx.status = getLivenessStatus(ctx);
       ctx.body = statuses[ctx.status];
       return;

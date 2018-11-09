@@ -9,5 +9,5 @@ module.exports = {
       this[SERVER_HEALTH_STATUS] = new HealthStatus();
     }
     return this[SERVER_HEALTH_STATUS];
-  }
+  },
 };
