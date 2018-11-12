@@ -13,8 +13,6 @@ describe('test/app.test.js', () => {
       app = mock.app({
         baseDir: 'apps/healthapp',
       });
-      // wait for one worker start
-      await sleep(2000);
     });
     after(() => async () => {
       await app.ready();
@@ -22,7 +20,6 @@ describe('test/app.test.js', () => {
     });
 
     it('should response 503 from readiness', async () => {
-      // one worker has started, but the server is starting
       await app.httpRequest()
         .get('/healthy/readiness')
         .expect(503);
