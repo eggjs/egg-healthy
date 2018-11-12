@@ -88,4 +88,37 @@ describe('test/cluster.test.js', () => {
         .expect(503);
     });
   });
+
+  describe('restarting', () => {
+    before(async () => {
+      mock.env('default');
+      app = mock.cluster({
+        baseDir: 'apps/healthapp',
+      });
+      app.debug();
+      await app.ready();
+    });
+    after(() => async () => {
+      await app.close();
+    });
+
+    it('should response 200 from readiness and liveness', async () => {
+      await app.httpRequest()
+        .get('/exception')
+        .expect(200);
+
+      await sleep(1000);
+
+      app.expect('stdout', /app_worker#2:\d+ started/);
+
+      await app.httpRequest()
+        .get('/healthy/readiness')
+        .expect(200);
+
+      await app.httpRequest()
+        .get('/healthy/liveness')
+        .expect(200);
+    });
+  });
+
 });
