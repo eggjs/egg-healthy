@@ -1,6 +1,6 @@
 {
   "name": "egg-healthy",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Liveness and Readiness health check for egg application",
   "eggPlugin": {
     "name": "healthy"
@@ -24,8 +24,9 @@
     "egg-bin": "^4.9.0",
     "egg-ci": "^1.10.0",
     "egg-mock": "^3.20.1",
-    "eslint": "^5.8.0",
+    "eslint": "^5.9.0",
     "eslint-config-egg": "^7.1.0",
+    "mz-modules": "^2.1.0",
     "webstorm-disable-index": "^1.2.0"
   },
   "engines": {
