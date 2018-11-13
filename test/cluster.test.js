@@ -107,7 +107,7 @@ describe('test/cluster.test.js', () => {
         .get('/exception')
         .expect(200);
 
-      await sleep(4000);
+      await sleep(5000);
 
       app.expect('stdout', /app_worker#2:\d+ started/);
 
