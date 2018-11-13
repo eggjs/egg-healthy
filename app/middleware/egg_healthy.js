@@ -5,7 +5,7 @@ const HealthStatusCode = require('../../lib/health_status_code');
 
 module.exports = (_, app) => {
   const config = app.config.healthy;
-  return async (ctx, next) => {
+  return async function healthy(ctx, next) {
     if (ctx.path === config.readinessPath) {
       ctx.status = getReadinessStatus(ctx);
       ctx.body = statuses[ctx.status];
